@@ -1,0 +1,8 @@
+Podsumowanie:
+Metoda bezpośrednia rozwiązuje ten układ równań w miarę szybko, a dwie
+testowane metody iteracyjne nie zbiegają się do jednej odpowiedzi, co
+znaczy, że nie uzyskamy tymi metodami przybliżonego rozwiązania tego układu.
+Możemy z tego doświadczenia wyciągnąć wnioskek, że mimio poprzednich dobrych
+wyników tych metod, nie można ich stosować zawsze, ponieważ może to prowadzić
+do takich właśnie sytuacji, gdzie nigdy nie dostaniemy odpwiedzi. Wybór metody
+powinien być poparty odpowiednią wiedzą na temat układu równań.

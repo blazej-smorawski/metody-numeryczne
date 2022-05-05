@@ -1,0 +1,4 @@
+Metoda interpolacji trygonometrycznej wydaje się dawać wyniki, które są prawdopodobnie
+bardziej zbliżone do próbkowanej funkcji, a także nie pojawiają się tam takie problemy
+jak efekt Rungego, który znacznie pogarsza wyniki interpolacji wielomianowej na krańcach
+przedziałów, co dobrze jest widoczne przy interpolacji wielomianowej dla K=25.

@@ -1,0 +1,11 @@
+	W przypadku poszukiwania miejsca zerowego wokół x=6.0, algorytm szybko znajduje
+przedział [a,b], gdzie sgn(a)!=sgn(b). Funkcja tg będzie najprawdopodobniej ciągła
+na tym przedziale i będzie osiągała swoje kresy, więc z twierdzenia Weierstrassa
+wiemy, że istnieje taki "x" dla którego tg(x)=0.
+
+	W przypadku poszukiwania miejsca zerowego wokół x=4.5, algorytm znajduje
+przedział [a,b], gdzie sgn(a)!=sgn(b), ale niestety funkcja tg prawdopodobnie będzie zawierała
+nieciągłość na tym przedziale, więc twierdzenie Weierstrassa nie już nie gwarantuje nam
+istnienia takiego x w tym przedziale, że tg(x)=0. Próby zawężenia tego przedziału tylko
+pogarszają sytuację, ponieważ algorytm stara się zmniejszyć przedział przy zachowaniu
+różnych znaków na jego granicach, co powoduje tylko oddalanie się tg(a) i tg(b) od 0.

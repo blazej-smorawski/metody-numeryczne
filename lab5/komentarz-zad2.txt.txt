@@ -1,0 +1,3 @@
+Z wykresów jasno widać, że metoda interpolacji trygonometrycznej pozwala nam na poprawienie wyniku,
+wraz ze wzrostem liczby próbek, co nie do końca jest widoczne dla interpolacji wielomianowej i jest
+najpewniej spowodowane wspomnianym w poprzednim zadaniu efektem Rungego.

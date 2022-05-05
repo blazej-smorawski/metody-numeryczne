@@ -1,0 +1,6 @@
+Podsumowanie:
+Metoda bezpośrednia jest zdecydowanie najwolniejsza w przypadku rozwiązywania tego
+typu układów równań. Metody iteracyjne zyskują bardzo dużo jeśli chodzi o czas wykonania,
+a różnice między nimi są bardzo małe. Metoda Jacobiego wydaje być się najszybszą, chociaż
+wymaga większej liczby iteracji do osiągnięcia normy residuum rzędu 10^-14, to przez
+mniejszą złożoność obliczeniową działa nieco szybciej niż metoda Gaussa-Seidla.
