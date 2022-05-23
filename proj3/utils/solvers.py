@@ -1,7 +1,7 @@
 import time
 from cmath import sqrt
 
-from matrix import *
+from utils.matrix import *
 
 
 def lu(m: Matrix, b: Matrix) -> Matrix:
@@ -10,6 +10,37 @@ def lu(m: Matrix, b: Matrix) -> Matrix:
     x = backward_substitution(u, y)
 
     return x
+
+
+def lu_p(A: Matrix, b: Matrix) -> Matrix:
+    u = A.copy()
+    m = A.size[0]
+    l = identity(m)
+    p = identity(m)
+    for k in range(1, m):
+        # Find pivot
+        ind = 0
+        pivot = 0
+        for x in range(k, m + 1):
+            if abs(u[x, k]) > pivot:
+                pivot = abs(u[x, k])
+                ind = x
+
+        # Interchange rows
+        pivot = 0
+        for x in range(k, m + 1):
+            u[k, x], u[ind, x] = u[ind, x], u[k, x]
+        for x in range(1, k):
+            l[k, x], l[ind, x] = l[ind, x], l[k, x]
+        for x in range(1, m + 1):
+            p[k, x], p[ind, x] = p[ind, x], p[k, x]
+
+        for j in range(k + 1, A.size[0] + 1):
+            l[j, k] = u[j, k] / u[k, k]
+            for x in range(k, A.size[0] + 1):
+                u[j, x] = u[j, x] - l[j, k] * u[k, x]
+
+    return backward_substitution(u, forward_substitution(l, p * b))
 
 
 def jacobi(m: Matrix, b: Matrix) -> tuple[Matrix, list[float]]:

@@ -1,18 +1,18 @@
 import time
 from cmath import sqrt
 
-from cmatrix import *
+from matrix import *
 
-def lu(m: Matrix, b: Matrix):
+def lu(m: Matrix, b: Matrix) -> Matrix:
     l, u = lu_factorization(m)
     y = forward_substitution(l, b)
     x = backward_substitution(u, y)
 
     return x
 
-def jacobi(m: Matrix, b: Matrix):
+def jacobi(m: Matrix, b: Matrix) -> tuple[Matrix, list[float]]:
     # Data for timing out if necessary
-    timeout: float = 60
+    timeout: float = 3600
     start: float = time.time()
 
     # Algorithm
@@ -30,9 +30,33 @@ def jacobi(m: Matrix, b: Matrix):
         if res_norm <= pow(10, -9):
             break
         else:
-            first = forward_substitution(D, (L + U) * r) * -1
-            second = forward_substitution(D, b)
             r = (forward_substitution(D, (L + U) * r) * -1) + forward_substitution(D, b)
+        elapsed: float = time.time()
+        if elapsed - start > timeout:
+            raise TimeoutError()
+    return r, ress
+
+def gauss(m: Matrix, b: Matrix) -> tuple[Matrix, list[float]]:
+    # Data for timing out if necessary
+    timeout: float = 3600
+    start: float = time.time()
+
+    # Algorithm
+    ress = []
+    r = Matrix(b.size)
+    r.fill(1)
+    D = diagonal_matrix(m.diagonal())
+    L = m.lower_triangle() - D
+    U = m.upper_triangle() - D
+
+    while True:
+        res = residuum(m, r, b)
+        res_norm = norm(res)
+        ress.append(res_norm)
+        if res_norm <= pow(10, -9):
+            break
+        else:
+            r = (forward_substitution(D + L, U * r) * -1) + forward_substitution(D + L, b)
         elapsed: float = time.time()
         if elapsed - start > timeout:
             raise TimeoutError()
